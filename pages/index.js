@@ -122,11 +122,9 @@ export default function WaterQuiz() {
                 <div 
                   key={water.id}
                   onClick={() => setSelected(water)}
-                  className={`
-                    p-4 bg-white rounded-lg cursor-pointer transition
-                    ${selected?.id === water.id ? 'border-2 border-blue-500' : 'border'}
-                    hover:bg-blue-100
-                  `}
+                  className={`p-4 bg-white rounded-lg cursor-pointer transition ${
+                    selected?.id === water.id ? 'border-2 border-blue-500' : 'border'
+                  } hover:bg-blue-100`}
                 >
                   <div className="text-3xl mb-2">{water.icon}</div>
                   <div className="text-sm">{water.name}</div>
@@ -137,12 +135,11 @@ export default function WaterQuiz() {
             <button
               onClick={() => setShowResult(true)}
               disabled={!selected}
-              className={`
-                w-full p-3 rounded transition
-                ${selected 
+              className={`w-full p-3 rounded transition ${
+                selected 
                   ? 'bg-blue-500 text-white hover:bg-blue-600' 
-                  : 'bg-gray-200 cursor-not-allowed'}
-              `}
+                  : 'bg-gray-200 cursor-not-allowed'
+              }`}
             >
               선택 완료
             </button>
