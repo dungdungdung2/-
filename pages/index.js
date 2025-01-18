@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-const WaterQuiz = () => {
+export default function WaterQuiz() {
   const [stage, setStage] = useState(0);
   const [userPath, setUserPath] = useState('consumer');
   const [email, setEmail] = useState('');
@@ -26,8 +26,8 @@ const WaterQuiz = () => {
       question: "가장 좋아하는 분식 메뉴는?",
       options: ["떡볶이", "김밥", "우동", "기타"],
       handler: () => {}
-    }
-{
+    },
+    {
       question: "음식의 맛에 얼마나 민감하신가요?",
       options: ["매우 민감", "보통", "크게 신경쓰지 않음"],
       handler: (answer) => {
@@ -52,7 +52,8 @@ const WaterQuiz = () => {
       handler: () => setShowEmailForm(true)
     }
   ];
-const professionalQuizFlow = [
+
+  const professionalQuizFlow = [
     {
       question: "분식점을 운영하거나 관련 일을 하시나요?",
       options: ["네", "아니오"],
@@ -95,7 +96,8 @@ const professionalQuizFlow = [
       handler: () => setShowEmailForm(true)
     }
   ];
-const SimpleGame = () => {
+
+  const SimpleGame = () => {
     const [selected, setSelected] = useState(null);
     const [showResult, setShowResult] = useState(false);
     
@@ -182,7 +184,8 @@ const SimpleGame = () => {
       </div>
     );
   };
-const EmailCollectForm = () => (
+
+  const EmailCollectForm = () => (
     <div className="p-4 bg-green-50 rounded-lg">
       <h3 className="text-lg font-semibold mb-2">특별한 물의 비밀을 알고 싶으신가요?</h3>
       <p className="text-sm text-gray-600 mb-4">
@@ -254,6 +257,4 @@ const EmailCollectForm = () => (
       </div>
     </div>
   );
-};
-
-export default WaterQuiz;
+}
