@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import Head from 'next/head';
 export default function WaterQuiz() {
   const [stage, setStage] = useState(0);
   const [userPath, setUserPath] = useState('consumer');
@@ -223,35 +223,41 @@ export default function WaterQuiz() {
 
   const currentQuestion = currentFlow[stage];
 
-  return (
-    <div className="w-full max-w-4xl p-4">
-      <div className="mb-4">
-        <div className="h-2 bg-gray-200 rounded overflow-hidden">
-          <div 
-            className="h-full bg-blue-500 transition-all duration-500"
-            style={{ width: `${((stage + 1) / currentFlow.length) * 100}%` }}
-          />
+ return (
+    <>
+      <Head>
+        <title>물 맛 퀴즈</title>
+        <meta name="description" content="특별한 물 맛 찾기 퀴즈" />
+      </Head>
+      <div className="w-full max-w-4xl p-4">
+        <div className="mb-4">
+          <div className="h-2 bg-gray-200 rounded overflow-hidden">
+            <div 
+              className="h-full bg-blue-500 transition-all duration-500"
+              style={{ width: `${((stage + 1) / currentFlow.length) * 100}%` }}
+            />
+          </div>
+        </div>
+        
+        <h2 className="text-lg font-semibold mb-4">{currentQuestion.question}</h2>
+        
+        <div className="space-y-2">
+          {currentQuestion.options.map((option) => (
+            <button
+              key={option}
+              onClick={() => {
+                currentQuestion.handler(option);
+                if (!showGame) {
+                  setStage(prev => prev + 1);
+                }
+              }}
+              className="w-full p-3 text-left border rounded hover:bg-gray-50 transition"
+            >
+              {option}
+            </button>
+          ))}
         </div>
       </div>
-      
-      <h2 className="text-lg font-semibold mb-4">{currentQuestion.question}</h2>
-      
-      <div className="space-y-2">
-        {currentQuestion.options.map((option) => (
-          <button
-            key={option}
-            onClick={() => {
-              currentQuestion.handler(option);
-              if (!showGame) {
-                setStage(prev => prev + 1);
-              }
-            }}
-            className="w-full p-3 text-left border rounded hover:bg-gray-50 transition"
-          >
-            {option}
-          </button>
-        ))}
-      </div>
-    </div>
+    </>
   );
 }
